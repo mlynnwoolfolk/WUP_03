@@ -14,15 +14,49 @@ require(tidyverse)
 require(tigerstats)
 davisdata <- read.csv(file="UCDavis.csv")
 ```
+
 #Introduction
-Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
-you choose to sit in??
+Our Goal is to answer this question Is there a difference between the alcohol consumed between the row you choose to sit in??
 
-The data came from Uc 
+The data came from UcDavis in the year...
+
+$H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
+
+$H_A$: The average number drinks is different between at least two rows.   
+
+
+# Methods
+In the davisdta Seat is a categorical variable, alcohol is numerical 
+
+we try to predict alcohol ~Seat so we have to use the ..... helper file 
 
 
 
+# Results 
 
+ 
+## Descriptive results 
+
+### Graphical Summary 
+```{r}
+basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
+```
+now add in boxplot
+
+```{r}
+basicCN + geom_boxplot()
+```
+  
+
+
+### Numerical Results 
+
+
+
+The numerical summary shows that...
+
+
+### Inferential Results 
 
 ## Now with ggplot - first select the basic data
 

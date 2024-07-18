@@ -14,8 +14,7 @@ require(tidyverse)
 require(tigerstats)
 davisdata <- read.csv(file="UCDavis.csv")
 ```
-
-#Introduction
+# Introduction
 Our Goal is to answer this question Is there a difference between the alcohol consumed between the row you choose to sit in??
 
 The data came from UcDavis in the year...
@@ -24,62 +23,59 @@ $H_0$: There is no difference between the average number of drinks imbibed betwe
 
 $H_A$: The average number drinks is different between at least two rows.   
 
-
 # Methods
-In the davisdta Seat is a categorical variable, alcohol is numerical 
+In the data set davisdata Seat is a categorical variable, alcohol is numerical 
 
-we try to predict alcohol ~Seat so we have to use the ..... helper file 
+we try to predict alcohol ~Seat so we have to use the ....... helper file 
 
+# Results  
 
-
-# Results 
-
- 
 ## Descriptive results 
 
-### Graphical Summary 
+### Graphical Results 
+
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
-now add in boxplot
+ Now add in boxplot
 
 ```{r}
 basicCN + geom_boxplot()
 ```
-  
+
+This boxplot shows that.....
 
 
 ### Numerical Results 
 
-
-
-The numerical summary shows that...
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+The numerical summary shows that....
 
 
 ### Inferential Results 
 
-## Now with ggplot - first select the basic data
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+the p-value is 0.00116, less than 0.05 so we reject the null hypothesis. 
+ There is a difference in alcohol onsumption based on where people sit 
+ 
+## When significant follow up with TukeyHSD  
 
 ```{r}
-basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
-```
-## Now add in boxplot
-
-```{r}
-basicCN + geom_boxplot()
-```
-  
-  
-### get fancy  
-
-```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+plot(TukeyHSD(model1))
 ```
 
-## Numerical Summarys 
 
-## Inferential Tests
 
 ## Conclusions
+
+
+
+
+
 
 
